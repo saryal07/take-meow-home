@@ -19,4 +19,10 @@ The repository to store our code for the final project
 - [ ] Make online form and store the user product in the database
 - [ ] Implement the pages in ASP.NET Core
 - [ ] Format a base layout that will be use by all of our page. (Footer, header, menu info)
+
+**Page we need**
+- [ ] Home page
+- [ ] About page
+- [ ] Take online order
+- [ ] View cart page
       
