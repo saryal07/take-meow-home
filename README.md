@@ -25,4 +25,13 @@ The repository to store our code for the final project
 - [ ] About page
 - [ ] Take online order
 - [ ] View cart page
+
+**What to install**
+- [ ] git
+- [ ] vs code
+- [ ] vs code extension: C# dev kit
+- [ ] clone the repository
+- [ ] dotnet tool install --global dotnet-ef
+- [ ] Migration creation:  dotnet ef migrations add <Initial> --project ..\FinalProject.Data\
+- [ ] Migration execute: dotnet ef database update --project ../FinalProject.Data
       
