@@ -2,24 +2,37 @@
 @using FinalProject.Models
 
 @{
-    ViewData["Title"] = "Buy your favorite products";
+    ViewData["Title"] = "Find your fur friend";
 }
 
-<div class="panel panel-default todo-panel">
+<div class="panel panel-default todo-panel container-col">
     <div class="panel-heading">
         <h1>@ViewData["Title"]</h1>
     </div>
-
-    <form id="productForm" method="post" asp-action="AddtoCart">
+    <div class="container-col">
+        <form id="productForm" method="post" asp-action="AddtoCart">
         @foreach (var product in Model.Products) {
-            <div class="product-item">
+            <div class="card">
+                <div class="card-image">
+                    <img src="@product.ImagePath" alt="@product.Name">
+                </div>
+                <p class="name">@product.Name</p>
+                <p class="card-description">@product.Description</p>
                 <input type="checkbox" name="productIds" value="@product.Id">
-                <p><strong>@product.Name</strong></p>
-                <img src="@product.ImagePath" alt="@product.Name" width="280px" height="250px"/>
-                <p>@product.Description</p>
             </div>
         }
-        <button type="submit">Add Selected Products to Cart</button>
-
-    </form>
+        <div class="center-btn">
+            <button class="btn2" type="submit">Add to Cart</button>
+        </div>
+        </form>
+    </div>
 </div>
+
+<!--
+    <div class="product-item">
+                <input type="checkbox" name="productIds" value="product.Id">
+                <p><strong>product.Name</strong></p>
+                <img src="product.ImagePath" alt="product.Name" width="280px" height="250px"/>
+                <p>product.Description</p>
+            </div>
+-->

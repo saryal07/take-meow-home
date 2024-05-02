@@ -82,5 +82,33 @@ namespace FinalProject.Services
             return saveResult == 1;
 
         }
+
+        public async Task<Product[]> GetPaidProductsAsync()
+        {
+            var products = await _context.Products
+                .Where(x => x.IsPaid == true)
+                .ToArrayAsync();
+            return products;
+        }
+
+        public async Task<bool> SetPaidToTrueAsync(int[] productIds){
+
+            foreach (var productId in productIds)
+            {
+                var product = _context.Products.FirstOrDefault(p => p.Id == productId);
+                if (product != null)
+                {
+                    // Update the IsPaid property for the selected product
+                    product.IsPaid = true;
+                    // Also set IsInCart back to false since it is paid
+                    product.IsInCart = false;
+                }
+            }
+
+            // Save changes to the database
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+
+        }
     }
 }

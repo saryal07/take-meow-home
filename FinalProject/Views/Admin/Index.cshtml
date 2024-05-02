@@ -1,0 +1,30 @@
+@model ProductViewModel
+@using FinalProject.Models
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="panel panel-default todo-panel container-col">
+    <div class="panel-heading">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+
+    <form method="post" asp-action="">
+        @foreach (var product in Model.Products) {
+            <div class="item">
+                <div class="image">
+                    <input class="checkbox" type="checkbox" name="productIds" value="@product.Id">
+                    <img class="item-image" src="@product.ImagePath" alt="@product.Name"/>
+                </div>
+                <div class="product-detail">
+                    <span>@product.Name</span>
+                    <span>@product.Description</span>
+                </div>
+            </div>
+        }
+        <div class="center-btn">
+            <button class="btn2" type="submit">Approve the order</button>
+        </div>   
+    </form>
+</div>

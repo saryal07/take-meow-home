@@ -38,7 +38,7 @@ namespace FinalProject.Controllers
                 // Handle case when no products are selected
                 return RedirectToAction("Index");
             }
-            //sets isInCart to false to indicate they are removed from cart
+            //sets isInCart to true to indicate they are added to cart
             var successful = await _todoItemService.SetToCartTrueAsync(productIds);
         
             // if (!successful)

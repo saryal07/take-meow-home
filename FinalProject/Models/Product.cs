@@ -8,5 +8,6 @@ namespace FinalProject.Models
         public bool IsInCart { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
+        public bool IsPaid { get; set; }
     }
 }

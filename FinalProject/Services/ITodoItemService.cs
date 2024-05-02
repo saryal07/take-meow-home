@@ -12,5 +12,7 @@ namespace FinalProject.Services
         Task<bool> SetToCartTrueAsync(int[] productIds);
         Task<Product[]> GetCartProductsAsync();
         Task<bool> SetToCartFalseAsync(int[] productIds);
+        Task<Product[]> GetPaidProductsAsync();
+        Task<bool> SetPaidToTrueAsync(int[] productIds);
     }
 }

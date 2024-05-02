@@ -48,6 +48,26 @@ namespace FinalProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PayTheCat(int[] productIds)
+        {
+            if (productIds == null || productIds.Length == 0)
+            {
+                // Handle case when no products are selected
+                return RedirectToAction("Index");
+            }
+            //sets isPAid to true to indicate they are paid
+            var successful = await _todoItemService.SetPaidToTrueAsync(productIds);
+        
+            // if (!successful)
+            // {
+            //     return BadRequest("Could not add items to cart.");
+            // }
+
+            return RedirectToAction("Index");
+        }
     }
 
 }

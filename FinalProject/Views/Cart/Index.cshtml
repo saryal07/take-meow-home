@@ -2,24 +2,79 @@
 @using FinalProject.Models
 
 @{
-    ViewData["Title"] = "Buy your favorite products";
+    ViewData["Title"] = "My Cart";
 }
 
-<div class="panel panel-default todo-panel">
+<div class="panel panel-default todo-panel container-col">
     <div class="panel-heading">
         <h1>@ViewData["Title"]</h1>
     </div>
 
     <form method="post" asp-action="RemoveFromCart">
         @foreach (var product in Model.Products) {
-            <div class="product-item">
-                <input type="checkbox" name="productIds" value="@product.Id">
-                <p><strong>@product.Name</strong></p>
-                <img src="@product.ImagePath" alt="@product.Name" width="280px" height="250px"/>
-                <p>@product.Description</p>
+            <div class="item">
+                <div class="image">
+                    <input class="checkbox" type="checkbox" name="productIds" value="@product.Id">
+                    <img class="item-image" src="@product.ImagePath" alt="@product.Name"/>
+                </div>
+                <div class="product-detail">
+                    <span>@product.Name</span>
+                    <span>@product.Description</span>
+                </div>
             </div>
         }
-        <button type="submit">Remove Selected Products from Cart</button>
-        <button type="submit" formaction="">Pay Now</button>
+        <div class="center-btn">
+            <button class="btn2" type="submit">Remove from Cart</button>
+            <button class="btn2" type="submit" asp-action="PayTheCat">Pay Now</button>
+        </div>   
     </form>
 </div>
+
+<div class="panel panel-default todo-panel">
+    <div class="panel-heading">
+        <h1>On the Way Order</h1>
+    </div>
+    @foreach (var paidProduct in Model.Products){
+        <div class="paid-item">
+            <div class="image">
+                <img class="item-image" src="@paidProduct.ImagePath" alt="@paidProduct.Name"/>
+            </div>
+            <div class="product-detail">
+                <span>@paidProduct.Name</span>
+                <span>@paidProduct.Description</span>
+            </div>
+            <div class="status">
+                <span>Status</span>
+                <span>Paid</span>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<!--
+    
+        <div class="quantity">
+            <div>
+                <span>Quantity</span>
+            </div>
+            <div>
+                <img id="plus" src="~/image/plus.jpg" alt="" class="function">
+                <input id="productQuantity" type="text" name="quantity" value="1">
+                <img id="minus" src="~/image/minus.jpg" alt="" class="function">
+            </div>
+        </div>
+        <div class="delete">
+            <img id="deleteButton" class="function" src="~/image/delete.jpg" alt="">
+        </div>
+
+
+
+        <div class="product-item">
+                <input type="checkbox" name="productIds" value="product.Id">
+                <p><strong>product.Name</strong></p>
+                <img src="product.ImagePath" alt="product.Name" width="280px" height="250px"/>
+                <p>product.Description</p>
+        </div>
+-->
