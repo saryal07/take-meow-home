@@ -10,7 +10,7 @@
         <h1>@ViewData["Title"]</h1>
     </div>
 
-    <form method="post" asp-action="">
+    <form method="post" asp-action="confirm">
         @foreach (var product in Model.Products) {
             <div class="item">
                 <div class="image">
@@ -20,6 +20,11 @@
                 <div class="product-detail">
                     <span>@product.Name</span>
                     <span>@product.Description</span>
+                    <div>
+                        @if(@product.IsShipped == true){
+                            <span class="green-text">Approve Successfully</span>
+                    }
+                    </div>
                 </div>
             </div>
         }

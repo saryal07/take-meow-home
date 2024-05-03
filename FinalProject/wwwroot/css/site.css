@@ -87,7 +87,7 @@ h1{
   margin-bottom: 5px;
   font-weight: 600;
 }
-.product-detail span:last-child{
+.product-detail span:nth-child(2){
   color: rgb(131, 131, 131);
 }
 
@@ -186,4 +186,8 @@ h1{
 .center-btn{
   display: flex;
   justify-content: center;
+}
+
+.green-text{
+  color: green;
 }

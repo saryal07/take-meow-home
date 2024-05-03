@@ -28,6 +28,26 @@ namespace FinalProject.Controllers
             };
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> confirm(int[] productIds)
+        {
+            if (productIds == null || productIds.Length == 0)
+            {
+                // Handle case when no products are selected
+                return RedirectToAction("Index");
+            }
+            //sets isPAid to false to indicate they are paid and the admin confirm the order
+            var successful = await _todoItemService.SetShipToTrueAsync(productIds);
+        
+            // if (!successful)
+            // {
+            //     return BadRequest("Could not add items to cart.");
+            // }
+
+            return RedirectToAction("Index");
+        }
     }
 
 }
