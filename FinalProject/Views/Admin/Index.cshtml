@@ -14,7 +14,9 @@
         @foreach (var product in Model.Products) {
             <div class="item">
                 <div class="image">
-                    <input class="checkbox" type="checkbox" name="productIds" value="@product.Id">
+                    @if(!product.IsShipped){
+                        <input class="checkbox" type="checkbox" name="productIds" value="@product.Id">
+                    }
                     <img class="item-image" src="@product.ImagePath" alt="@product.Name"/>
                 </div>
                 <div class="product-detail">
@@ -23,7 +25,10 @@
                     <div>
                         @if(@product.IsShipped == true){
                             <span class="green-text">Approve Successfully</span>
-                    }
+                        }
+                        else{
+                            <span class="red-text">Approve Needed</span>   
+                        }
                     </div>
                 </div>
             </div>
