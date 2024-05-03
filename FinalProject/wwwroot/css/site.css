@@ -160,12 +160,13 @@ h1{
 
 .title-bold{
   font-weight: 600;
+  margin: 10px 0 5px 0;
 }
 
 .card{
   background-color: white;
-  width: 350px;
-  height: 520px;
+  width: 360px;
+  height: 540px;
   border-radius: 5px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
@@ -183,6 +184,10 @@ h1{
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
 }
 
+.info{
+  margin-top: auto;
+}
+
 .center-btn{
   display: flex;
   justify-content: center;
@@ -194,4 +199,9 @@ h1{
 
 .red-text{
   color: red;
+}
+
+input [type="checkbox"]{
+  width: 20px;
+  height: 20px;
 }

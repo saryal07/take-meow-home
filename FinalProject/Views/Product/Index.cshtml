@@ -16,20 +16,20 @@
                 <div class="card-image">
                     <img src="@product.ImagePath" alt="@product.Name">
                 </div>
-                <p class="name">@product.Name</p>
+                <p class="name title-bold">@product.Name</p>
                 <p class="card-description">@product.Description</p>
 
                 @if (!product.IsInCart && !product.IsPaid && !product.IsShipped){
-                        <input type="checkbox" class="product-checkbox" name="productIds" value="@product.Id">
+                        <input type="checkbox" class="product-checkbox info" name="productIds" value="@product.Id">
                     }
                 else if (product.IsInCart){
-                    <p style="color: rgb(128, 128, 0);"> &#128712; Item Added to Cart. Go to Cart Page for payment.</p>
+                    <p class="info" style="color: rgb(128, 128, 0);"> &#128712; Item Added to Cart. Go to Cart Page for payment.</p>
                 }
                 else if (product.IsPaid){
-                    <p style="color: rgb(117, 0, 128);"> &#128712; Item has been paid. Wait for shipping.</p>
+                    <p class="info" style="color: rgb(117, 0, 128);"> &#128712; Item has been paid. Wait for shipping.</p>
                 }
                 else if (product.IsShipped){
-                    <p style="color: green;"> &#10003; Item has been shipped.</p>
+                    <p class="info" style="color: green;"> &#10003; Item has been shipped.</p>
                 }
             </div>
         }
