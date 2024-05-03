@@ -14,5 +14,6 @@ namespace FinalProject.Services
         Task<bool> SetToCartFalseAsync(int[] productIds);
         Task<Product[]> GetPaidProductsAsync();
         Task<bool> SetPaidToTrueAsync(int[] productIds);
+        Task<bool> SetShipToTrueAsync(int[] productIds);
     }
 }

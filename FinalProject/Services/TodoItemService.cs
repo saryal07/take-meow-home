@@ -110,6 +110,26 @@ namespace FinalProject.Services
             return saveResult == 1;
 
         }
+
+        public async Task<bool> SetShipToTrueAsync(int[] productIds){
+
+            foreach (var productId in productIds)
+            {
+                var product = _context.Products.FirstOrDefault(p => p.Id == productId);
+                if (product != null)
+                {
+                    // Update the IsShipped property for the selected product
+                    product.IsShipped = true;
+                    // Also set IsInCart back to false since it is paid
+                    //product.IsInCart = false;
+                }
+            }
+
+            // Save changes to the database
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+
+        }
         
     }
 }
