@@ -201,7 +201,7 @@ h1{
   color: red;
 }
 
-input [type="checkbox"]{
-  width: 20px;
-  height: 20px;
+.product-checkbox{
+  width: 30px;
+  height: 30px;
 }
