@@ -86,7 +86,7 @@ namespace FinalProject.Services
         public async Task<Product[]> GetPaidProductsAsync()
         {
             var products = await _context.Products
-                .Where(x => x.IsPaid == true)
+                .Where(x => x.IsPaid == true || x.IsShipped == true)
                 .ToArrayAsync();
             return products;
         }
@@ -120,6 +120,7 @@ namespace FinalProject.Services
                 {
                     // Update the IsShipped property for the selected product
                     product.IsShipped = true;
+                    product.IsPaid = false;
                     // Also set IsInCart back to false since it is paid
                     //product.IsInCart = false;
                 }

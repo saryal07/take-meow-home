@@ -2,7 +2,7 @@
 @using FinalProject.Models
 
 @{
-    ViewData["Title"] = "Find your fur friend";
+    ViewData["Title"] = "Find your purr friend";
 }
 
 <div class="panel panel-default todo-panel container-col">
@@ -18,7 +18,19 @@
                 </div>
                 <p class="name">@product.Name</p>
                 <p class="card-description">@product.Description</p>
-                <input type="checkbox" name="productIds" value="@product.Id">
+
+                @if (!product.IsInCart && !product.IsPaid && !product.IsShipped){
+                        <input type="checkbox" class="product-checkbox" name="productIds" value="@product.Id">
+                    }
+                else if (product.IsInCart){
+                    <p style="color: rgb(128, 128, 0);"> &#128712; Item Added to Cart. Go to Cart Page for payment.</p>
+                }
+                else if (product.IsPaid){
+                    <p style="color: rgb(117, 0, 128);"> &#128712; Item has been paid. Wait for shipping.</p>
+                }
+                else if (product.IsShipped){
+                    <p style="color: green;"> &#10003; Item has been shipped.</p>
+                }
             </div>
         }
         <div class="center-btn">
@@ -27,12 +39,3 @@
         </form>
     </div>
 </div>
-
-<!--
-    <div class="product-item">
-                <input type="checkbox" name="productIds" value="product.Id">
-                <p><strong>product.Name</strong></p>
-                <img src="product.ImagePath" alt="product.Name" width="280px" height="250px"/>
-                <p>product.Description</p>
-            </div>
--->
