@@ -86,7 +86,7 @@ namespace FinalProject.Services
         public async Task<Product[]> GetPaidProductsAsync()
         {
             var products = await _context.Products
-                .Where(x => x.IsPaid == true)
+                .Where(x => x.IsPaid == true || x.IsShipped == true)
                 .ToArrayAsync();
             return products;
         }
@@ -102,6 +102,27 @@ namespace FinalProject.Services
                     product.IsPaid = true;
                     // Also set IsInCart back to false since it is paid
                     product.IsInCart = false;
+                }
+            }
+
+            // Save changes to the database
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+
+        }
+
+        public async Task<bool> SetShipToTrueAsync(int[] productIds){
+
+            foreach (var productId in productIds)
+            {
+                var product = _context.Products.FirstOrDefault(p => p.Id == productId);
+                if (product != null)
+                {
+                    // Update the IsShipped property for the selected product
+                    product.IsShipped = true;
+                    product.IsPaid = false;
+                    // Also set IsInCart back to false since it is paid
+                    //product.IsInCart = false;
                 }
             }
 
