@@ -11,28 +11,30 @@
     </div>
     <div class="container-col">
         <form id="productForm" method="post" asp-action="AddtoCart">
-        @foreach (var product in Model.Products) {
-            <div class="card">
-                <div class="card-image">
-                    <img src="@product.ImagePath" alt="@product.Name">
+            @foreach (var product in Model.Products) {
+                <div class="card">
+                    <div class="card-image">
+                        <img src="@product.ImagePath" alt="@product.Name">
+                    </div>
+                    <p class="name">@product.Name</p>
+                    <p class="card-description">@product.Description</p>
+                    @if (!product.IsInCart && !product.IsPaid){
+                        <input type="checkbox" class="product-checkbox" name="productIds" value="@product.Id">
+                    }
+                    @if (product.IsInCart){
+                        <p style="color: green;">Item Added to Cart. Go to Cart Page for payment.</p>
+                    }
+                    @if (product.IsPaid){
+                        <p style="color: rgb(0, 51, 128);">Item has been paid. Wait for shipping.</p>
+                    }
+                    @* @if (product.IsShipped){
+                        <p style="color: green;">Item has been shipped.</p>
+                    } *@
                 </div>
-                <p class="name">@product.Name</p>
-                <p class="card-description">@product.Description</p>
-                <input type="checkbox" name="productIds" value="@product.Id">
+            }
+            <div class="center-btn">
+                <button class="btn2" type="submit">Add to Cart</button>
             </div>
-        }
-        <div class="center-btn">
-            <button class="btn2" type="submit">Add to Cart</button>
-        </div>
         </form>
     </div>
 </div>
-
-<!--
-    <div class="product-item">
-                <input type="checkbox" name="productIds" value="product.Id">
-                <p><strong>product.Name</strong></p>
-                <img src="product.ImagePath" alt="product.Name" width="280px" height="250px"/>
-                <p>product.Description</p>
-            </div>
--->
