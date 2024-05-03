@@ -34,7 +34,7 @@
     <div class="panel-heading">
         <h1>On the Way Order</h1>
     </div>
-    @foreach (var paidProduct in Model.Products){
+    @foreach (var paidProduct in Model.PaidProducts){
         <div class="paid-item">
             <div class="image">
                 <img class="item-image" src="@paidProduct.ImagePath" alt="@paidProduct.Name"/>
@@ -45,7 +45,12 @@
             </div>
             <div class="status">
                 <span>Status</span>
-                <span>Paid</span>
+                @if(@paidProduct.IsPaid == true){
+                    <span>Paid</span>
+                }
+                else{
+                    <span>Shipped</span>
+                }
             </div>
         </div>
     }

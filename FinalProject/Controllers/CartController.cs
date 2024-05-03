@@ -19,13 +19,17 @@ namespace FinalProject.Controllers
         public async Task<IActionResult> Index()
         {
             var products = await _todoItemService.GetCartProductsAsync();
+            var paidproducts = await _todoItemService.GetPaidProductsAsync();
             // Get products from database where IsInCart is true
             // Put products into a model
             // Render view using the model
             var model = new ProductViewModel()
             {
-                Products = products
+                Products = products,
+                PaidProducts= paidproducts
             };
+
+            
             return View(model);
         }
 
