@@ -17,24 +17,9 @@ namespace FinalProject.Services
             _context = context;
         }
 
-        // public async Task<bool> AddItemAsync(TodoItem newItem)
-        // {
-        //     newItem.Id = Guid.NewGuid();
-        //     newItem.IsDone = false;
-        //     if(newItem.DueAt == null){
-        //         newItem.DueAt = DateTimeOffset.Now.AddDays(3);
-        //     }
-
-        //     _context.Items.Add(newItem);
-
-        //     var saveResult = await _context.SaveChangesAsync();
-        //     return saveResult == 1;
-        // }
-
         public async Task<Product[]> GetProductsAsync()
         {
             var products = await _context.Products
-                //.Where(x => x.IsInCart == false)
                 .ToArrayAsync();
             return products;
         }
@@ -121,8 +106,6 @@ namespace FinalProject.Services
                     // Update the IsShipped property for the selected product
                     product.IsShipped = true;
                     product.IsPaid = false;
-                    // Also set IsInCart back to false since it is paid
-                    //product.IsInCart = false;
                 }
             }
 

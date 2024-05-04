@@ -7,7 +7,6 @@ namespace FinalProject.Services
 {
     public interface ITodoItemService
     {
-        //Task<bool> AddItemAsync(TodoItem newItem);
         Task<Product[]> GetProductsAsync();
         Task<bool> SetToCartTrueAsync(int[] productIds);
         Task<Product[]> GetCartProductsAsync();

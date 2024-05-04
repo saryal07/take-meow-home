@@ -40,11 +40,6 @@ namespace FinalProject.Controllers
             }
             //sets isInCart to true to indicate they are added to cart
             var successful = await _todoItemService.SetToCartTrueAsync(productIds);
-        
-            // if (!successful)
-            // {
-            //     return BadRequest("Could not add items to cart.");
-            // }
 
             return RedirectToAction("Index");
         }

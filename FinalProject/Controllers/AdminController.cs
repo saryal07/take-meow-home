@@ -40,11 +40,6 @@ namespace FinalProject.Controllers
             }
             //sets isPAid to false to indicate they are paid and the admin confirm the order
             var successful = await _todoItemService.SetShipToTrueAsync(productIds);
-        
-            // if (!successful)
-            // {
-            //     return BadRequest("Could not add items to cart.");
-            // }
 
             return RedirectToAction("Index");
         }
