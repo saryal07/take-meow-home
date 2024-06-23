@@ -1,5 +1,5 @@
 # take-meow-home
-The repository to store my code for the final project
+This is a website that sells exceptional cats from around the world
 
 **Requirement for this project**
 - [ ] A nice-looking homepage to market your various products
