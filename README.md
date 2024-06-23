@@ -1,5 +1,5 @@
-# web-dev-final-project
-The repository to store our code for the final project
+# take-meow-home
+The repository to store my code for the final project
 
 **Requirement for this project**
 - [ ] A nice-looking homepage to market your various products
